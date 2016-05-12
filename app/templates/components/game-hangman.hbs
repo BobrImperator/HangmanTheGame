@@ -1,0 +1,16 @@
+{{input value=word}}
+
+
+{{#each letters as |letter|}}
+
+    <span{{action  'clickLetter' letter }}> {{letter}}</span>
+
+ {{/each}}
+
+<div>
+  {{#each correctLetters as |cl|}}
+    <span>{{cl}}</span>
+  {{/each}}
+</div>
+
+{{word}}
