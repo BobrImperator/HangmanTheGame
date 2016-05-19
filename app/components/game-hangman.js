@@ -26,13 +26,11 @@ export default Ember.Component.extend({
 
   remainingLives: Ember.computed('correctLetters.[]','guessedLetters.[]', function() {
     let livesCount = this.get('livesCount'),
-    correctLetters = this.get('correctLetters',
+    correctLetters = this.get('correctLetters'),
     guessedLetters = this.get('guessedLetters');
 
-    for(let count = 0; count < wordSoFar.length;count--) {
-
-    }
-
+    let missedLettersCount = guessedLetters.length - correctLetters.length ;
+    return  livesCount - missedLettersCount;
 
   }),
 
