@@ -7,7 +7,7 @@ export default Ember.Component.extend({
     't', 'u', 'v', 'w', 'x', 'y', 'z'
   ], // alphabet
   guessedLetters: [], // incorrect letters
-  remainingLives: 10, // Lives left
+  livesCount: 9, // Lives left
 
 
   correctLetters: Ember.computed('word', 'guessedLetters.[]', function() {
@@ -24,9 +24,16 @@ export default Ember.Component.extend({
 
   }),
 
-  mistakes: Ember.computed('remainingLives','wordSoFar', function() {
-    let remainingLives = this.get('remainingLives'), wordSoFar = this.get('wordSoFar').split('');
-    return remainingLives && wordSoFar;
+  remainingLives: Ember.computed('correctLetters.[]','guessedLetters.[]', function() {
+    let livesCount = this.get('livesCount'),
+    correctLetters = this.get('correctLetters',
+    guessedLetters = this.get('guessedLetters');
+
+    for(let count = 0; count < wordSoFar.length;count--) {
+
+    }
+
+
   }),
 
   actions: {
