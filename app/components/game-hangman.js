@@ -9,22 +9,24 @@ export default Ember.Component.extend({
   guessedLetters: [], // incorrect letters
   remainingLives: 10, // Lives left
 
+
   correctLetters: Ember.computed('word', 'guessedLetters.[]', function() {
     let word = this.get('word').toLowerCase(),
         guessedLetters = this.get("guessedLetters");
     return guessedLetters.filter( (l) => word.includes(l)); //counted correct letters
   }),
-  orderOfletters: Ember.computed('word', 'correctLetters', function() {
-    let word = this.get('word'), correctLetters = this.get(correctLetters);
 
-    for (let i = 1; i < word.length; i++) {
-      console.log(i);
+  wordSoFar: Ember.computed('correctLetters.[]', function() {
+    let word = this.get('word').toLowerCase().split(''),
+    correctLetters = this.get('correctLetters');
 
+    return word.map(letter => correctLetters.includes(letter) ? letter : "_").join(" ");
 
-}
+  }),
 
-
-
+  mistakes: Ember.computed('remainingLives','wordSoFar', function() {
+    let remainingLives = this.get('remainingLives'), wordSoFar = this.get('wordSoFar').split('');
+    return remainingLives && wordSoFar;
   }),
 
   actions: {
@@ -42,7 +44,7 @@ export default Ember.Component.extend({
 
 //Usuwa litere z letters
 // correctLetters w kolejnosci dla danego slowa , computed property, iterujaca i wyswietlajaca.
-
+// map jak zgadnieta literka to zwrocona literka jesli nie to - ...
 // result = function () {
 //     wordHolder = document.getElementById('hold');
 //     correct = document.createElement('ul');
@@ -64,3 +66,10 @@ export default Ember.Component.extend({
 //     }
 //   }
 //
+// let letters = "abcdefghijklmnoprstwuyzx";
+// let lettersSplit = letters.split(" ");
+// let guessedLetter = [];
+// let remainingLives = 10;
+// let correctLetters =
+//
+// });
