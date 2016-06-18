@@ -4,9 +4,9 @@ export default Ember.Component.extend({
   word: "Hey You!", // passed word
   letters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
     'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-    't', 'u', 'v', 'w', 'x', 'y', 'z'
+    't', 'u', 'v', 'w', 'x', 'y', 'z', ' '
   ], // alphabet
-  guessedLetters: [], // incorrect letters
+  guessedLetters: [], // Array of already picked letters
   livesCount: 9, // Lives left
 
 
@@ -33,6 +33,16 @@ export default Ember.Component.extend({
     return  livesCount - missedLettersCount;
 
   }),
+
+  gameLost: Ember.computed('remainingLives' , function () {
+    let remainingLives = this.get('remainingLives');
+
+    if (remainingLives == 0) {
+    }
+    return alert("Hangman is hanged \n You lost!")
+
+  }),
+
 
   actions: {
     clickLetter(letter) {

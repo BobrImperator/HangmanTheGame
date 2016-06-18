@@ -8,13 +8,15 @@
 {{/each}}
 
 <div>
+  {{#if (lt remainingLives 0)}}
+  {{gameLost}}
+  {{/if}}
   {{remainingLives}}
 </div>
 
 <div>
   {{wordSoFar}}
 </div>
-
 <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="250" height="335" id="svg2" sodipodi:version="0.32" inkscape:version="0.45" sodipodi:docbase="/home/kyle/Desktop" sodipodi:docname="Hangman.svg" inkscape:output_extension="org.inkscape.output.svg.inkscape"
     version="1.0" sodipodi:modified="true">
