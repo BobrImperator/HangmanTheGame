@@ -42,7 +42,11 @@ export default Ember.Component.extend({
     return alert("Hangman is hanged \n You lost!");
 
   }),
+  countWhiteSpaces: Ember.computed('word',function(){
+    let word = this.get('word');
 
+    return (word.match(/\s/g) || []).length;
+  }),
   notAllowedCharacters: Ember.computed('word', function() {
     let word = this.get('word');
     let pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/); //unacceptable chars
@@ -55,9 +59,10 @@ export default Ember.Component.extend({
 
   gameWon: Ember.computed('wordSoFar.[]','word',function(){
     let wordSoFar = this.get('wordSoFar'),
-    word = this.get('word');
+    word = this.get('word'),
+    countWhiteSpaces = this.get('countWhiteSpaces');
 
-    return (wordSoFar.match(/_/g) || []).length;
+    return (wordSoFar.match(/_/g) || []).length - countWhiteSpaces;
 
   }),
 

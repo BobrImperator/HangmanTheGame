@@ -3,7 +3,7 @@
 
 {{#each letters as |letter|}}
 
-  <span  id="20"{{action  'clickLetter' letter }}> {{letter}}</span>
+  <span  {{action  'clickLetter' letter }}> {{letter}}</span>
 
 {{/each}}
 <div>
@@ -25,6 +25,7 @@
 
 <div>
 {{notAllowedCharacters}}
+{{countWhiteSpaces}}
 </div>
 
 <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
