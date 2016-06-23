@@ -1,10 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  word: "Hey You!", // passed word
-  letters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+  word: "Hello", // passed word
+  letters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ,
     'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-    't', 'u', 'v', 'w', 'x', 'y', 'z', ' '
+    't', 'u', 'v', 'w', 'x', 'y', 'z'
   ], // alphabet
   guessedLetters: [], // Array of already picked letters
   livesCount: 9, // Lives left
@@ -37,9 +37,27 @@ export default Ember.Component.extend({
   gameLost: Ember.computed('remainingLives' , function () {
     let remainingLives = this.get('remainingLives');
 
-    if (remainingLives == 0) {
+    if (remainingLives === 0) {
     }
-    return alert("Hangman is hanged \n You lost!")
+    return alert("Hangman is hanged \n You lost!");
+
+  }),
+
+  notAllowedCharacters: Ember.computed('word', function() {
+    let word = this.get('word');
+    let pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/); //unacceptable chars
+    if (pattern.test(word)) {
+        alert("Please only use standard alphanumerics");
+        return false;
+    }
+    return true; //good user input
+  }),
+
+  gameWon: Ember.computed('wordSoFar.[]','word',function(){
+    let wordSoFar = this.get('wordSoFar'),
+    word = this.get('word');
+
+    return (wordSoFar.match(/_/g) || []).length;
 
   }),
 
@@ -52,9 +70,10 @@ export default Ember.Component.extend({
       guessedLetters.pushObject(letter);
 
       console.log(letter);
+    },
+
     }
 
-  }
 });
 
 //Usuwa litere z letters
