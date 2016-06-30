@@ -1,9 +1,16 @@
-{{input value=word}}
+{{state}}
 
+{{#if (eq state "provideWord")}}
 
+{{input value=wordRaw}}
+<button {{action 'startGame'}}> Start Game </button>
+
+{{/if}}
+
+{{#if (eq state "play")}}
 {{#each letters as |letter|}}
 
-  <span  {{action  'clickLetter' letter }}> {{letter}}</span>
+  <button  {{action  'clickLetter' letter }}> {{letter}}</button>
 
 {{/each}}
 <div>
@@ -107,3 +114,4 @@
     </g>
   </g>
 </svg>
+{{/if}}

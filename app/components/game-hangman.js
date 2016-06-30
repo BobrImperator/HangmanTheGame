@@ -1,14 +1,16 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  word: "Hello", // passed word
+  wordRaw: "Hello",
+  word: Ember.computed('wordRaw', function(){
+    return this.get('wordRaw').trim();
+  }),
   letters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' ,
     'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-    't', 'u', 'v', 'w', 'x', 'y', 'z'
-  ], // alphabet
+    't', 'u', 'v', 'w', 'x', 'y', 'z'], // alphabet
   guessedLetters: [], // Array of already picked letters
   livesCount: 9, // Lives left
-
+  state: "provideWord",
 
   correctLetters: Ember.computed('word', 'guessedLetters.[]', function() {
     let word = this.get('word').toLowerCase(),
@@ -19,8 +21,9 @@ export default Ember.Component.extend({
   wordSoFar: Ember.computed('correctLetters.[]', function() {
     let word = this.get('word').toLowerCase().split(''),
     correctLetters = this.get('correctLetters');
+    let letterOrWhitespace = (letter) => letter === " " ? "-" : "_";
 
-    return word.map(letter => correctLetters.includes(letter) ? letter : "_").join(" ");
+    return word.map(letter => correctLetters.includes(letter) ? letter : letterOrWhitespace(letter)).join(" ");
 
   }),
 
@@ -38,8 +41,9 @@ export default Ember.Component.extend({
     let remainingLives = this.get('remainingLives');
 
     if (remainingLives === 0) {
+      return this.set('state', 'lost');
     }
-    return alert("Hangman is hanged \n You lost!");
+    return this.set('state', 'lost');
 
   }),
   countWhiteSpaces: Ember.computed('word',function(){
@@ -76,39 +80,15 @@ export default Ember.Component.extend({
 
       console.log(letter);
     },
+    startGame() {
+      this.set('state', 'play');
+
+    },
+
 
     }
 
 });
 
-//Usuwa litere z letters
-// correctLetters w kolejnosci dla danego slowa , computed property, iterujaca i wyswietlajaca.
-// map jak zgadnieta literka to zwrocona literka jesli nie to - ...
-// result = function () {
-//     wordHolder = document.getElementById('hold');
-//     correct = document.createElement('ul');
-//
-//     for (var i = 0; i < word.length; i++) {
-//       correct.setAttribute('id', 'my-word');
-//       guess = document.createElement('li');
-//       guess.setAttribute('class', 'guess');
-//       if (word[i] === "-") {
-//         guess.innerHTML = "-";
-//         space = 1;
-//       } else {
-//         guess.innerHTML = "_";
-//       }
-//
-//       geusses.push(guess);
-//       wordHolder.appendChild(correct);
-//       correct.appendChild(guess);
-//     }
-//   }
-//
-// let letters = "abcdefghijklmnoprstwuyzx";
-// let lettersSplit = letters.split(" ");
-// let guessedLetter = [];
-// let remainingLives = 10;
-// let correctLetters =
-//
-// });
+//Definiowanie stanu gry, stan zalezny od zdefiniowania slowa.
+//Drugi stan, pokazanie svg hangmana,liter i zyc.
