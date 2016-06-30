@@ -1,5 +1,5 @@
 {{state}}
-
+{{#unless (eq state "lost")}}
 {{#if (eq state "provideWord")}}
 
 {{input value=wordRaw}}
@@ -115,3 +115,4 @@
   </g>
 </svg>
 {{/if}}
+{{/unless}}
