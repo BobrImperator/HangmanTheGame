@@ -1,39 +1,59 @@
 {{state}}
-{{#unless (eq state "lost")}}
-{{#if (eq state "provideWord")}}
 
-{{input value=wordRaw}}
-<button {{action 'startGame'}}> Start Game </button>
+{{#if (eq state "nothanged")}}
 
+{{render "won"}}
 {{/if}}
 
-{{#if (eq state "play")}}
-{{#each letters as |letter|}}
 
-  <button  {{action  'clickLetter' letter }}> {{letter}}</button>
 
-{{/each}}
-<div>
-  {{#if (lt remainingLives 0)}}
-  {{gameLost}}
+{{#unless (eq state "lost")}}
+  {{#if (eq state "provideWord")}}
+
+    {{input value=wordRaw}}
+    <!-- Start game and check if unallowed characters were used -->
+    <button {{action 'startGame'}}> Start Game </button>
+
+    {{#unless isValid }}
+      <p> Special characters and numbers are not allowed </p>
+    {{/unless }}
+
   {{/if}}
-  {{remainingLives}}
-</div>
-<div>
-  {{#if (eq gameWon 0)}}
-  <p> Hangman survived! </p>
-  {{/if}}
-  {{gameWon}}
-</div>
 
-<div>
-  {{wordSoFar}}
-</div>
+  {{#if (eq state "play")}}
 
-<div>
-{{notAllowedCharacters}}
-{{countWhiteSpaces}}
-</div>
+    <!-- Each letter of alphabt as a button -->
+    {{#each letters as |letter|}}
+
+      <button {{action  'clickLetter' letter }}> {{letter}}</button>
+
+    {{/each}}
+    <!-- Each letter of alphabt as a button -->
+    <!-- remainingLives and conditions if Won or Lost -->
+    <div>
+    {{gameLost}}
+    <p>  Untill loss {{remainingLives}} </p>
+    </div>
+    <div>
+      {{#if (eq gameWon 0)}}
+
+      {{hangmanSurvived}}
+
+      {{/if}}
+  <p>  Untill win  {{gameWon}} </p>
+    </div>
+    <!-- remainingLives and conditions if Won or Lost -->
+      <!-- Word's correctLetters -->
+    <div>
+      {{wordSoFar}}
+    </div>
+      <!-- Word's correctLetters -->
+    <!-- Hangman's SVG -->
+    <!-- Hangman's SVG -->
+
+
+
+
 
 <svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="250" height="335" id="svg2" sodipodi:version="0.32" inkscape:version="0.45" sodipodi:docbase="/home/kyle/Desktop" sodipodi:docname="Hangman.svg" inkscape:output_extension="org.inkscape.output.svg.inkscape"
@@ -51,37 +71,22 @@
   </metadata>
   <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(-114,-122.07646)">
     <g id="g11187" transform="translate(6.0620665,7.5002173)">
-      <g transform="translate(-111.92749,160.80094)" id="g11164">
-        <path id="path4186" d="M 339.98949,248.92545 L 349.31788,248.92545" style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-        />
-        <path id="path4188" d="M 354.23768,248.92545 L 363.56607,248.92545" style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-        />
-        <path id="path4190" d="M 368.48586,248.92545 L 377.81425,248.92545" style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-        />
-        <path id="path4192" d="M 382.73404,248.92544 L 392.06243,248.92544" style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-        />
-        <path id="path4194" d="M 396.98224,248.92545 L 406.31063,248.92545" style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-        />
-        <path id="path4196" d="M 411.23041,248.92545 L 420.5588,248.92545" style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-        />
-        <path id="path4198" d="M 453.97497,248.92545 L 463.30336,248.92545" style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-        />
-        <path id="path4200" d="M 425.4786,248.92545 L 434.80699,248.92545" style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-        />
-        <path style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:square;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans"
-            d="M 439.72678,248.92545 L 449.05517,248.92545" id="path3213" />
-      </g>
       <g transform="translate(-43.188757,-133.55095)" id="g7197">
         {{#if (lt remainingLives 1)}}
           <path sodipodi:type="arc" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.78482032;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path2162" sodipodi:cx="230.71428" sodipodi:cy="384.14789"
-              sodipodi:rx="22.142857" sodipodi:ry="44.285713" d="M 252.85714 384.14789 A 22.142857 44.285713 0 1 1  208.57142,384.14789 A 22.142857 44.285713 0 1 1  252.85714 384.14789 z" transform="matrix(1.117742,0,0,1.1233871,55.01382,-28.577474)" />
+              sodipodi:rx="22.142857" sodipodi:ry="44.285713" d="M 252.85714 384.14789 A 22.142857 44.285713 0 1 1  208.57142,384.14789 A 22.142857 44.285713 0 1 1  252.85714 384.14789 z" transform="matrix(1.117742,0,0,1.1233871,55.01382,-28.577474)"
+          />
         {{/if}}
 
         {{#if (lt remainingLives 0)}}
           <path sodipodi:type="arc" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.61031735;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path2168" sodipodi:cx="200.26274" sodipodi:cy="332.88104"
-              sodipodi:rx="15.404826" sodipodi:ry="16.414978" d="M 215.66757 332.88104 A 15.404826 16.414978 0 1 1  184.85791,332.88104 A 15.404826 16.414978 0 1 1  215.66757 332.88104 z" transform="matrix(1.2820657,0,0,1.2031694,56.890928,-66.420592)" />
+              sodipodi:rx="15.404826" sodipodi:ry="16.414978" d="M 215.66757 332.88104 A 15.404826 16.414978 0 1 1  184.85791,332.88104 A 15.404826 16.414978 0 1 1  215.66757 332.88104 z" transform="matrix(1.2820657,0,0,1.2031694,56.890928,-66.420592)"
+          />
         {{/if}}
-        <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M 329.78571,442.00504 L 357.02632,489.18716" id="path5217" />
+        {{#if (lt remainingLives 2)}}
+
+          <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M 329.78571,442.00504 L 357.02632,489.18716" id="path5217" />
+        {{/if}}
 
         {{#if (lt remainingLives 2)}}
           <path id="path6208" d="M 296.50001,442.00504 L 269.2594,489.18716" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
@@ -107,12 +112,14 @@
       {{/if}}
       {{# if (lt remainingLives 4)}}
         <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M 269.9541,123.07646 L 269.9541,178.79074" id="path10117" />
-        {{/if}}
-        {{#if (lt remainingLives 6)}}
-          <path id="path10123" d="M 159.07114,162.2035 L 197.83575,123.4389" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        {{/if}}
-    </g>
-  </g>
+{{/if}}
+{{#if (lt remainingLives 6)}}
+<path id="path10123" d="M 159.07114,162.2035 L 197.83575,123.4389" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+{{/if}}
+</g>
+</g>
 </svg>
 {{/if}}
+{{else}}
+{{render "lost"}}
 {{/unless}}
