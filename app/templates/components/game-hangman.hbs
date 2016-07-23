@@ -1,29 +1,32 @@
-{{state}}
-
-{{#if (eq state "nothanged")}}
-
-{{render "won"}}
+{{playGame.state}}
+{{#if (eq playGame.state "nothanged")}}
+  {{alive-hangman}}
 {{/if}}
 
 
 
-{{#unless (eq state "lost")}}
-  {{#if (eq state "provideWord")}}
+{{#unless (eq playGame.state "lost")}}
+  {{#if (eq playGame.state "provideWord")}}
+    {{playGame.pickHangman}}
 
-    {{input value=wordRaw}}
+      <button {{action 'stickman'}}> Man </button>
+      <button {{action 'stickwoman'}}> Woman </button>
+
+
+    {{input value=playGame.wordRaw}}
     <!-- Start game and check if unallowed characters were used -->
     <button {{action 'startGame'}}> Start Game </button>
-
-    {{#unless isValid }}
+    {{stickman-1}}
+    {{#unless playGame.isValid }}
       <p> Special characters and numbers are not allowed </p>
     {{/unless }}
 
   {{/if}}
 
-  {{#if (eq state "play")}}
+  {{#if (eq playGame.state "play")}}
 
     <!-- Each letter of alphabt as a button -->
-    {{#each letters as |letter|}}
+    {{#each playGame.letters as |letter|}}
 
       <button {{action  'clickLetter' letter }}> {{letter}}</button>
 
@@ -31,95 +34,28 @@
     <!-- Each letter of alphabt as a button -->
     <!-- remainingLives and conditions if Won or Lost -->
     <div>
-    {{gameLost}}
-    <p>  Untill loss {{remainingLives}} </p>
+      {{playGame.gameLost}}
+      <p> Untill loss {{playGame.remainingLives}} </p>
     </div>
     <div>
-      {{#if (eq gameWon 0)}}
+      {{#if (eq playGame.gameWon 0)}}
 
-      {{hangmanSurvived}}
+        {{playGame.hangmanSurvived}}
 
       {{/if}}
-  <p>  Untill win  {{gameWon}} </p>
+      <p> Untill win {{playGame.gameWon}} </p>
     </div>
     <!-- remainingLives and conditions if Won or Lost -->
-      <!-- Word's correctLetters -->
+    <!-- Word's correctLetters -->
     <div>
-      {{wordSoFar}}
+      {{playGame.wordSoFar}}
     </div>
-      <!-- Word's correctLetters -->
+    <!-- Word's correctLetters -->
     <!-- Hangman's SVG -->
     <!-- Hangman's SVG -->
+    {{stickman-1}}
 
-
-
-
-
-<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="250" height="335" id="svg2" sodipodi:version="0.32" inkscape:version="0.45" sodipodi:docbase="/home/kyle/Desktop" sodipodi:docname="Hangman.svg" inkscape:output_extension="org.inkscape.output.svg.inkscape"
-    version="1.0" sodipodi:modified="true">
-  <defs id="defs4" />
-  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" gridtolerance="10000" guidetolerance="10" objecttolerance="10" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="0.98994949" inkscape:cx="204.09091"
-      inkscape:cy="174.38424" inkscape:document-units="px" inkscape:current-layer="layer1" inkscape:window-width="808" inkscape:window-height="624" inkscape:window-x="420" inkscape:window-y="231" width="250px" height="335px" />
-  <metadata id="metadata7">
-    <rdf:RDF>
-      <cc:Work rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(-114,-122.07646)">
-    <g id="g11187" transform="translate(6.0620665,7.5002173)">
-      <g transform="translate(-43.188757,-133.55095)" id="g7197">
-        {{#if (lt remainingLives 1)}}
-          <path sodipodi:type="arc" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.78482032;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path2162" sodipodi:cx="230.71428" sodipodi:cy="384.14789"
-              sodipodi:rx="22.142857" sodipodi:ry="44.285713" d="M 252.85714 384.14789 A 22.142857 44.285713 0 1 1  208.57142,384.14789 A 22.142857 44.285713 0 1 1  252.85714 384.14789 z" transform="matrix(1.117742,0,0,1.1233871,55.01382,-28.577474)"
-          />
-        {{/if}}
-
-        {{#if (lt remainingLives 0)}}
-          <path sodipodi:type="arc" style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.61031735;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path2168" sodipodi:cx="200.26274" sodipodi:cy="332.88104"
-              sodipodi:rx="15.404826" sodipodi:ry="16.414978" d="M 215.66757 332.88104 A 15.404826 16.414978 0 1 1  184.85791,332.88104 A 15.404826 16.414978 0 1 1  215.66757 332.88104 z" transform="matrix(1.2820657,0,0,1.2031694,56.890928,-66.420592)"
-          />
-        {{/if}}
-        {{#if (lt remainingLives 2)}}
-
-          <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M 329.78571,442.00504 L 357.02632,489.18716" id="path5217" />
-        {{/if}}
-
-        {{#if (lt remainingLives 2)}}
-          <path id="path6208" d="M 296.50001,442.00504 L 269.2594,489.18716" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        {{/if}}
-        {{#if (lt remainingLives 3)}}
-          <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M 296.50001,365.18716 L 269.2594,318.00504" id="path6220" />
-        {{/if}}
-      </g>
-
-      <g transform="translate(12.857143,-0.7142853)" id="g10119">
-        {{#if (lt remainingLives 8)}}
-          <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M 102.14286,406.6479 L 145.19391,381.79236" id="path6224" />
-        {{/if}}
-        {{#if (lt remainingLives 9)}}
-          <path id="path7195" d="M 189.19391,406.6479 L 146.14286,381.79236" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-        {{/if}}
-      </g>
-      {{#if (lt remainingLives 7)}}
-        <path id="path8175" d="M 158.52553,380.78033 L 158.52553,123.07646" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      {{/if}}
-      {{#if (lt remainingLives 5)}}
-        <path id="path9146" d="M 158.52553,123.07646 L 269.9541,123.07646" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-      {{/if}}
-      {{# if (lt remainingLives 4)}}
-        <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M 269.9541,123.07646 L 269.9541,178.79074" id="path10117" />
-{{/if}}
-{{#if (lt remainingLives 6)}}
-<path id="path10123" d="M 159.07114,162.2035 L 197.83575,123.4389" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-{{/if}}
-</g>
-</g>
-</svg>
-{{/if}}
-{{else}}
-{{render "lost"}}
+  {{/if}}
+  {{else}}
+    {{dead-hangman}}
 {{/unless}}
