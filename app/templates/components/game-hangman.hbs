@@ -9,14 +9,16 @@
   {{#if (eq playGame.state "provideWord")}}
     {{playGame.pickHangman}}
 
-      <button {{action 'stickman'}}> Man </button>
-      <button {{action 'stickwoman'}}> Woman </button>
+    <button {{action 'stickman'}}> Man </button>
+    <button {{action 'stickwoman'}}> Woman </button>
 
 
     {{input value=playGame.wordRaw}}
     <!-- Start game and check if unallowed characters were used -->
     <button {{action 'startGame'}}> Start Game </button>
+
     {{stickman-1}}
+
     {{#unless playGame.isValid }}
       <p> Special characters and numbers are not allowed </p>
     {{/unless }}
@@ -51,7 +53,6 @@
       {{playGame.wordSoFar}}
     </div>
     <!-- Word's correctLetters -->
-    <!-- Hangman's SVG -->
     <!-- Hangman's SVG -->
     {{stickman-1}}
 
