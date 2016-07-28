@@ -7,17 +7,18 @@
 
 {{#unless (eq playGame.state "lost")}}
   {{#if (eq playGame.state "provideWord")}}
-    {{playGame.pickHangman}}
+
 
     <button {{action 'stickman'}}> Man </button>
     <button {{action 'stickwoman'}}> Woman </button>
+
 
 
     {{input value=playGame.wordRaw}}
     <!-- Start game and check if unallowed characters were used -->
     <button {{action 'startGame'}}> Start Game </button>
 
-    {{stickman-1}}
+    {{pick-hangman}}
 
     {{#unless playGame.isValid }}
       <p> Special characters and numbers are not allowed </p>
@@ -33,6 +34,7 @@
       <button {{action  'clickLetter' letter }}> {{letter}}</button>
 
     {{/each}}
+    
     <!-- Each letter of alphabt as a button -->
     <!-- remainingLives and conditions if Won or Lost -->
     <div>

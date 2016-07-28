@@ -27,38 +27,51 @@
     </metadata>
     <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(0,-308.26772)">
       <!-- gallow part -->
-      <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:6.02148819;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 35.397268,330.69269 416.954082,0 0,186.32773" id="path4702" inkscape:connector-curvature="0"
-      />
+      {{#if (lt playGame.remainingLives 0 )}}
+        <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:6.02148819;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 35.397268,330.69269 416.954082,0 0,186.32773" id="path4702" inkscape:connector-curvature="0"
+        />
+      {{/if}}
       <!-- gallow part -->
       <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" d="m 38.46181,330.69374 0,631.23612" id="path4696" inkscape:connector-curvature="0"
       />
-      <!-- gallow part -->
-      <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" d="M 38.321682,957.49753 5.2836126,1020.856" id="path4698" inkscape:connector-curvature="0"
-      />
-      <!-- gallow part -->
-      <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" d="m 38.459696,957.54829 28.433811,66.48261" id="path4700" inkscape:connector-curvature="0"
-      />
+      {{#if (lt playGame.remainingLives 1 )}}
+        <!-- gallow part -->
+        <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" d="M 38.321682,957.49753 5.2836126,1020.856" id="path4698" inkscape:connector-curvature="0"
+        />
+        <!-- gallow part -->
+        <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" d="m 38.459696,957.54829 28.433811,66.48261" id="path4700" inkscape:connector-curvature="0"
+        />
+      {{/if}}
+      {{#if (lt playGame.remainingLives 2 )}}
+        <!-- gallow part  -->
+        <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" d="M 37.738007,431.11722 142.69698,330.04741" id="path4704" inkscape:connector-curvature="0"
+        />
+      {{/if}}
       <!-- rope -->
-      <path style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:1.79005754;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:3.58011514, 1.79005756, 0.89502879, 1.79005756;stroke-dashoffset:0;stroke-opacity:1"
-          id="path4712" sodipodi:type="arc" sodipodi:cx="451.08282" sodipodi:cy="537.0517" sodipodi:rx="30.891581" sodipodi:ry="19.720377" sodipodi:start="5.7008911" sodipodi:end="5.6986571" sodipodi:open="true" d="m 476.88357,526.20664 a 30.891581,19.720377 0 0 1 -8.79778,27.30952 30.891581,19.720377 0 0 1 -42.78472,-5.60102 30.891581,19.720377 0 0 1 8.74999,-27.31577 30.891581,19.720377 0 0 1 42.79449,5.5705"
-      />
+      {{#if (lt playGame.remainingLives 3 )}}
+        <path style="fill:none;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:1.79005754;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:3.58011514, 1.79005756, 0.89502879, 1.79005756;stroke-dashoffset:0;stroke-opacity:1"
+            id="path4712" sodipodi:type="arc" sodipodi:cx="451.08282" sodipodi:cy="537.0517" sodipodi:rx="30.891581" sodipodi:ry="19.720377" sodipodi:start="5.7008911" sodipodi:end="5.6986571" sodipodi:open="true" d="m 476.88357,526.20664 a 30.891581,19.720377 0 0 1 -8.79778,27.30952 30.891581,19.720377 0 0 1 -42.78472,-5.60102 30.891581,19.720377 0 0 1 8.74999,-27.31577 30.891581,19.720377 0 0 1 42.79449,5.5705"
+        />
+      {{/if}}
+
+
       <!-- spine -->
-      <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.758968px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 451.01509,555.91911 0,219.08745 0.0161,-0.21253" id="path3340" inkscape:connector-curvature="0" sodipodi:nodetypes="ccc"
-      />
-    
+      {{#if (lt playGame.remainingLives 9)}}
+        <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.758968px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 451.01509,555.91911 0,219.08745 0.0161,-0.21253" id="path3340" inkscape:connector-curvature="0" sodipodi:nodetypes="ccc"
+        />
+      {{/if}}
+
       <!-- head -->
-      <path style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.88216615;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path3338" sodipodi:type="arc" sodipodi:cx="450.71454" sodipodi:cy="521.3454" sodipodi:rx="30.540615" sodipodi:ry="34.477867"
-          sodipodi:start="5.7008867" sodipodi:end="5.6986571" d="m 476.22208,502.38446 a 30.540615,34.477867 0 0 1 -8.69766,47.74631 30.540615,34.477867 0 0 1 -42.29869,-9.79235 30.540615,34.477867 0 0 1 8.65051,-47.75722 30.540615,34.477867 0 0 1 42.30833,9.7391"
-          sodipodi:open="true" />
-
-
+      {{#if (lt playGame.remainingLives 8 )}}
+        <path style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.88216615;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path3338" sodipodi:type="arc" sodipodi:cx="450.71454" sodipodi:cy="521.3454" sodipodi:rx="30.540615" sodipodi:ry="34.477867"
+            sodipodi:start="5.7008867" sodipodi:end="5.6986571" d="m 476.22208,502.38446 a 30.540615,34.477867 0 0 1 -8.69766,47.74631 30.540615,34.477867 0 0 1 -42.29869,-9.79235 30.540615,34.477867 0 0 1 8.65051,-47.75722 30.540615,34.477867 0 0 1 42.30833,9.7391"
+            sodipodi:open="true" />
+      {{/if}}
 
       <!-- bow's core -->
       <!-- <path sodipodi:nodetypes="cccccccccccccccc" inkscape:connector-curvature="0" id="path3375" d="m 464.90476,499.96766 c -2.55071,3.00406 -5.66176,5.48167 -9.26488,7.49692 -2.1343,0.84418 -4.27368,1.58183 -6.55191,-0.5843 -2.42522,-2.99196 -3.55821,-6.84705 -3.70465,-11.3765 0.0261,-2.42123 -0.538,-5.42217 2.74409,-7.83976 2.49596,-0.71884 4.1432,-1.53972 7.2702,-0.0543 2.40327,1.0107 5.07793,2.30882 7.14509,4.06286 0.58621,-0.74522 1.20607,-1.42357 2.02535,-1.70567 0.97327,-0.0579 1.92007,-0.0306 2.76004,0.33893 2.84883,-3.29644 5.80052,-6.1527 8.84172,-8.62594 -0.13187,0.0672 2.37595,-1.16059 3.87228,0.71702 2.18475,2.56565 3.61128,5.39235 4.52019,8.39727 0.32348,3.3381 1.52076,6.61586 -0.0452,10.08433 -0.86963,1.95315 -4.07071,3.23054 -7.44786,1.92328 -3.06985,-0.56667 -5.45435,-2.61093 -8.02942,-4.24433 -0.73072,1.41835 -3.09475,2.27887 -4.1351,1.41025 z"
         style="fill:#ff00ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.22579238px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" /> -->
-      <!-- gallow part  -->
-      <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none" d="M 37.738007,431.11722 142.69698,330.04741" id="path4704" inkscape:connector-curvature="0"
-      />
+
       <!-- <path sodipodi:nodetypes="ccccc" inkscape:connector-curvature="0" id="path3379" d="m 451.47621,491.51652 c -0.45851,5.12627 0.22337,9.97659 3.25041,14.2594 -0.18015,1.01969 -1.85721,0.75955 -2.90351,1.03872 -3.66032,-3.59173 -4.51415,-9.43006 -3.44024,-15.60135 1.36619,-0.018 2.50813,0.0436 3.09334,0.30323 z"
         style="fill:#333333;fill-rule:evenodd;stroke:#000000;stroke-width:0.22579238px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" /> -->
 
@@ -73,18 +86,26 @@
         id="path3377" inkscape:connector-curvature="0" sodipodi:nodetypes="ccccccc" /> -->
       <!-- <path style="fill:#333333;fill-rule:evenodd;stroke:#000000;stroke-width:0.22579238px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 479.22505,483.51387 c -2.43864,-2.1786 -7.35893,2.75216 -10.43151,6.97316 3.50672,-2.32308 8.153,-4.5954 10.43151,-6.97316 z"
         id="path3385" inkscape:connector-curvature="0" sodipodi:nodetypes="ccc" /> -->
-      <!-- right arm and right leg -->
 
-      <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.88216615px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 451.07918,774.76685 56.31442,107.9965" id="path4144" inkscape:connector-curvature="0" />
-
-      <path sodipodi:nodetypes="ccc" inkscape:connector-curvature="0" id="path4148" d="m 451.60184,607.22205 -0.053,0.41022 55.259,-61.18326" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.88216615px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-      />
-      <!-- left arm  -->
-      <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.88216615px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 450.92041,607.80222 0.0528,0.41022 -55.25901,-61.18328" id="path3344" inkscape:connector-curvature="0" sodipodi:nodetypes="ccc"
-      />
+      <!-- right leg -->
+      {{#if (lt playGame.remainingLives 7)}}
+        <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.88216615px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 451.07918,774.76685 56.31442,107.9965" id="path4144" inkscape:connector-curvature="0" />
+      {{/if}}
       <!-- left leg -->
-      <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.88216615px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 451.01391,774.95663 -55.9702,107.33638" id="path3342" inkscape:connector-curvature="0" />
+      {{#if (lt playGame.remainingLives 6 )}}
+        <path sodipodi:nodetypes="ccc" inkscape:connector-curvature="0" id="path4148" d="m 451.60184,607.22205 -0.053,0.41022 55.259,-61.18326" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.88216615px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+        />
+      {{/if}}
 
+      <!-- left arm  -->
+      {{#if (lt playGame.remainingLives 5 )}}
+        <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.88216615px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 450.92041,607.80222 0.0528,0.41022 -55.25901,-61.18328" id="path3344" inkscape:connector-curvature="0" sodipodi:nodetypes="ccc"
+        />
+      {{/if}}
+      <!-- left leg -->
+      {{#if (lt playGame.remainingLives 4 )}}
+        <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.88216615px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" d="m 451.01391,774.95663 -55.9702,107.33638" id="path3342" inkscape:connector-curvature="0" />
+      {{/if}}
     </g>
   </svg>
 
