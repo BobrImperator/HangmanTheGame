@@ -1,3 +1,18 @@
+<div class="container">
+  <div class="header clearfix">
+    <nav>
+      <!-- <ul class="nav nav-pills pull-right">
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">About</a></li>
+        <li role="presentation"><a href="#">Contact</a></li>
+      </ul> -->
+    </nav>
+    <h3 class="text-muted">Hangman</h3>
+  </div>
+</div>
+<div class="jumbotron">
+<button  class="btn btn-lg btn-success" href="#" role="button"
+{{action 'startGame'}}> Start Game </button>
 
 {{#if (eq playGame.state "nothanged")}}
   {{alive-hangman}}
@@ -9,18 +24,15 @@
   {{#if (eq playGame.state "provideWord")}}
 
 
-    <button {{action 'stickman'}}> Man </button>
-    <button {{action 'stickwoman'}}> Woman </button>
+    <button class="btn btn-lg btn-success" href="#" role="button"
+     {{action 'stickman'}}> Man </button>
+    <button class="btn btn-lg btn-success" href="#" role="button"
+    {{action 'stickwoman'}}> Woman </button>
 
 
-    <div>
-    {{input value=playGame.wordRaw}}
-  </div>
+    <h2>{{input value=playGame.wordRaw}} </h2>
     <!-- Start game and check if unallowed characters were used -->
-    <button {{action 'startGame'}}> Start Game </button>
-    <div class="pick-hangman">
     {{pick-hangman}}
-  </div>
     {{#unless playGame.isValid }}
       <p> Special characters and numbers are not allowed </p>
     {{/unless }}
@@ -30,12 +42,11 @@
   {{#if (eq playGame.state "play")}}
 
     <!-- Each letter of alphabt as a button -->
-
+    <div class="btn btn-lg btn-success">
     {{#each playGame.letters as |letter|}}
-
       <button {{action  'clickLetter' letter }}> {{letter}}</button>
-
     {{/each}}
+  </div>
     <!-- Each letter of alphabt as a button -->
     <!-- remainingLives and conditions if Won or Lost -->
 
@@ -62,7 +73,7 @@
     </div>
     <!-- remainingLives and conditions if Won or Lost -->
     <!-- Word's correctLetters -->
-    <div id="wordSoFar">
+    <div class="btn btn-lg btn-success">
       {{playGame.wordSoFar}}
     </div>
     <!-- Word's correctLetters -->
@@ -73,3 +84,4 @@
   {{else}}
   <!-- dead-hangman.hbs used to be here -->
 {{/unless}}
+</div>
