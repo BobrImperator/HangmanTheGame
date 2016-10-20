@@ -1,11 +1,11 @@
-{{playGame.state}}
+
 {{#if (eq playGame.state "nothanged")}}
   {{alive-hangman}}
 {{/if}}
 
 
 
-{{#unless (eq playGame.state "lost")}}
+{{#unless (eq playGame.state "dead")}}
   {{#if (eq playGame.state "provideWord")}}
 
 
@@ -13,13 +13,14 @@
     <button {{action 'stickwoman'}}> Woman </button>
 
 
-
+    <div>
     {{input value=playGame.wordRaw}}
+  </div>
     <!-- Start game and check if unallowed characters were used -->
     <button {{action 'startGame'}}> Start Game </button>
-
+    <div class="pick-hangman">
     {{pick-hangman}}
-
+  </div>
     {{#unless playGame.isValid }}
       <p> Special characters and numbers are not allowed </p>
     {{/unless }}
@@ -29,29 +30,39 @@
   {{#if (eq playGame.state "play")}}
 
     <!-- Each letter of alphabt as a button -->
+
     {{#each playGame.letters as |letter|}}
 
       <button {{action  'clickLetter' letter }}> {{letter}}</button>
 
     {{/each}}
-    
     <!-- Each letter of alphabt as a button -->
     <!-- remainingLives and conditions if Won or Lost -->
-    <div>
+
+
+    <div id="progress">
       {{playGame.gameLost}}
       <p> Untill loss {{playGame.remainingLives}} </p>
+      <p> Untill win {{playGame.gameWon}} </p>
     </div>
-    <div>
-      {{#if (eq playGame.gameWon 0)}}
 
-        {{playGame.hangmanSurvived}}
+    <div>
+
+      {{#if (eq playGame.gameWon 0)}}
+      {{alive-hangman}}
+        <!-- <button {{action 'playGame'}}>You won!</button> -->
 
       {{/if}}
-      <p> Untill win {{playGame.gameWon}} </p>
+      {{#if (eq playGame.remainingLives 0)}}
+      {{dead-hangman}}
+        <!-- <button {{action 'replayGame'}}>You lost!</button> -->
+      {{/if}}
+
+
     </div>
     <!-- remainingLives and conditions if Won or Lost -->
     <!-- Word's correctLetters -->
-    <div>
+    <div id="wordSoFar">
       {{playGame.wordSoFar}}
     </div>
     <!-- Word's correctLetters -->
@@ -60,5 +71,5 @@
 
   {{/if}}
   {{else}}
-    {{dead-hangman}}
+  <!-- dead-hangman.hbs used to be here -->
 {{/unless}}

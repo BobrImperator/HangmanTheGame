@@ -42,15 +42,7 @@ export default Ember.Service.extend({
 
   }),
 
-  gameLost: Ember.computed('remainingLives','state', function() {
-    let remainingLives = this.get('remainingLives'),
-    state = this.get('state');
 
-    if (remainingLives === 0 ) {
-    return  this.set('state' , 'lost');
-  }
-
-  }),
   countWhiteSpaces: Ember.computed('word', function() {
     let word = this.get('word');
 
@@ -70,14 +62,6 @@ export default Ember.Service.extend({
     return (wordSoFar.match(/_/g) || []).length - countWhiteSpaces;
 
   }),
-
-  hangmanSurvived: Ember.computed('gameWon','state', function(){
-    let gameWon = this.get('gameWon'),
-     state = this.get('state');
-    if (gameWon === 0 ) {
-    return  this.set('state' , 'nothanged');
-  }
-}),
 
   resetGame: function() {
     this.set('wordRaw', 'Hello'),
