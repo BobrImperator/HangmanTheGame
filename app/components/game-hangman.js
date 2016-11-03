@@ -1,28 +1,27 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  playGame: Ember.inject.service('play-game'),
-
-
-  actions: {
+actions: {
     clickLetter(letter) {
       let letters = this.get("playGame.letters"),
         guessedLetters = this.get('playGame.guessedLetters');
       letters.removeObject(letter);
       guessedLetters.pushObject(letter);
-      console.log(letter);
+      this.get('playGame').save();
     },
     stickman() {
       this.set('playGame.isMan', 'Man');
-
+      this.get('playGame').save();
     },
     stickwoman() {
       this.set('playGame.isMan', 'Woman');
+      this.get('playGame').save();
     },
     startGame() {
       let isValid = this.get('playGame.isValid');
       if (isValid) {
         this.set('playGame.state', 'play');
+        this.get('playGame').save();
       } else {
         alert("Special characters and numbers are not allowed");
 
@@ -31,6 +30,7 @@ export default Ember.Component.extend({
 
       replayGame() {
         this.set('playGame.state', 'provideWord');
+        this.get('platGame').save();
 
       }
     }

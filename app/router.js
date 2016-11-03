@@ -6,10 +6,8 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('game', { path: "game/:game_id" });
   this.route('new-game');
-  this.route('my-session');
-  this.route('play-with-me');
-  this.route('game');
 });
 
 export default Router;
