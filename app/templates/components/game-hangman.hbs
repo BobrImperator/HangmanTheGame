@@ -1,3 +1,4 @@
+<div class="jumbotron">
 <div class="container">
   <div class="header clearfix">
     <nav>
@@ -10,78 +11,81 @@
     <h3 class="text-muted">Hangman</h3>
   </div>
 </div>
-<div class="jumbotron">
-<button  class="btn btn-lg btn-success" href="#" role="button"
-{{action 'startGame'}}> Start Game </button>
 
-{{#if (eq playGame.state "nothanged")}}
-  {{alive-hangman}}
-{{/if}}
-
-
-
-{{#unless (eq playGame.state "dead")}}
-  {{#if (eq playGame.state "provideWord")}}
-
-
-    <button class="btn btn-lg btn-success" href="#" role="button"
-     {{action 'stickman'}}> Man </button>
-    <button class="btn btn-lg btn-success" href="#" role="button"
-    {{action 'stickwoman'}}> Woman </button>
-
-
-    <h2>{{input value=playGame.wordRaw}} </h2>
-    <!-- Start game and check if unallowed characters were used -->
-    {{pick-hangman}}
-    {{#unless playGame.isValid }}
-      <p> Special characters and numbers are not allowed </p>
-    {{/unless }}
-
+  {{#if (eq playGame.state "nothanged")}}
+    {{alive-hangman}}
   {{/if}}
 
-  {{#if (eq playGame.state "play")}}
-
-    <!-- Each letter of alphabt as a button -->
-    <div class="btn btn-lg btn-success">
-    {{#each playGame.letters as |letter|}}
-      <button {{action  'clickLetter' letter }}> {{letter}}</button>
-    {{/each}}
-  </div>
-    <!-- Each letter of alphabt as a button -->
-    <!-- remainingLives and conditions if Won or Lost -->
 
 
-    <div id="progress">
-      {{playGame.gameLost}}
-      <p> Untill loss {{playGame.remainingLives}} </p>
-      <p> Untill win {{playGame.gameWon}} </p>
-    </div>
-
-    <div>
-
-      {{#if (eq playGame.gameWon 0)}}
-      {{alive-hangman}}
-        <!-- <button {{action 'playGame'}}>You won!</button> -->
-
-      {{/if}}
-      {{#if (eq playGame.remainingLives 0)}}
-      {{dead-hangman}}
-        <!-- <button {{action 'replayGame'}}>You lost!</button> -->
-      {{/if}}
+  {{#unless (eq playGame.state "dead")}}
+    {{#if (eq playGame.state "provideWord")}}
+      <button class="btn btn-lg btn-success" href="#" role="button"
+       {{action 'startGame'}}> Start Game </button>
+      <button class="btn btn-lg btn-success" href="#" role="button" {{action 'stickman'}}> Man </button>
+      <button class="btn btn-lg btn-success" href="#" role="button" {{action 'stickwoman'}}> Woman </button>
 
 
-    </div>
-    <!-- remainingLives and conditions if Won or Lost -->
-    <!-- Word's correctLetters -->
-    <div class="btn btn-lg btn-success">
-      {{playGame.wordSoFar}}
-    </div>
-    <!-- Word's correctLetters -->
-    <!-- Hangman's SVG -->
-    {{stickman-1}}
+      <h2>{{input value=playGame.wordRaw}} </h2>
+      <!-- Start game and check if unallowed characters were used -->
+      {{pick-hangman}}
+      {{#unless playGame.isValid }}
+        <p> Special characters and numbers are not allowed </p>
+      {{/unless }}
 
-  {{/if}}
-  {{else}}
-  <!-- dead-hangman.hbs used to be here -->
-{{/unless}}
+    {{/if}}
+
+    {{#if (eq playGame.state "play")}}
+
+      <!-- Each letter of alphabt as a button -->
+      <div>
+        <div class="letters">
+          {{#each playGame.letters as |letter|}}
+            <button {{action  'clickLetter' letter }}> {{letter}}</button>
+          {{/each}}
+        </div>
+      </div>
+      <!-- Each letter of alphabt as a button -->
+      <!-- remainingLives and conditions if Won or Lost -->
+
+
+      <!-- <div class="progress"> -->
+        {{playGame.gameLost}}
+        <div class="loss">
+          <p> Untill loss {{playGame.remainingLives}} </p>
+        </div>
+        <div class="win">
+          <p> Untill win {{playGame.gameWon}} </p>
+        </div>
+      <!-- </div> -->
+
+      <div>
+
+        {{#if (eq playGame.gameWon 0)}}
+          {{alive-hangman}}
+          <!-- <button {{action 'playGame'}}>You won!</button> -->
+
+        {{/if}}
+        {{#if (eq playGame.remainingLives 0)}}
+          {{dead-hangman}}
+          <!-- <button {{action 'replayGame'}}>You lost!</button> -->
+        {{/if}}
+
+
+      </div>
+      <!-- remainingLives and conditions if Won or Lost -->
+      <!-- Word's correctLetters -->
+      <div class="btn btn-lg btn-success">
+        {{playGame.wordSoFar}}
+      </div>
+      <!-- Word's correctLetters -->
+      <!-- Hangman's SVG -->
+      <!-- <div class="stickman"> -->
+        {{stickman-1}}
+      <!-- </div> -->
+
+    {{/if}}
+    {{else}}
+      <!-- dead-hangman.hbs used to be here -->
+  {{/unless}}
 </div>

@@ -16,7 +16,16 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+      firebase: {
+      apiKey: "AIzaSyDbWNPYuy_ytVruuN6_3ZWjdHrPCe2UlSw",
+      authDomain: "hangman-97a0f.firebaseapp.com",
+      databaseURL: "https://hangman-97a0f.firebaseio.com",
+      storageBucket: "hangman-97a0f.appspot.com",
+      messagingSenderId: "957968887542"
     }
+
   };
 
   if (environment === 'development') {

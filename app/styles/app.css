@@ -76,4 +76,16 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+  .stick + .progress {
+    align-content: center;
+  }
+  .letters {
+    color: black;
+  }
+  .win {
+    background-color: green;
+  }
+  .loss {
+    background-color: red;
+  }
 }
