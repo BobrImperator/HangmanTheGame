@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.Model.extend({
 wordRaw: DS.attr("string", {defaultValue: "Hello"}),
@@ -9,7 +10,6 @@ letters: DS.attr({defaultValue: () => ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
   't', 'u', 'v', 'w', 'x', 'y', 'z'] }),
 livesCount: 9,
 isMan: DS.attr("string", {defaultValue: "Man"}),
-
 word: Ember.computed('wordRaw', function() {
   return this.get('wordRaw').trim();
 }),
@@ -19,7 +19,7 @@ correctLetters: Ember.computed('word', 'guessedLetters.[]', function() {
     guessedLetters = this.get("guessedLetters");
     if (guessedLetters === null) {
       this.set('guessedLetters', []);
-      return []
+      return [];
     } else {
       return guessedLetters.filter((l) => word.includes(l)); //counted correct letters
     }

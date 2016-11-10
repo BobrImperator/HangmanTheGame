@@ -19,10 +19,9 @@
     <button class="btn btn-lg btn-success" href="#" role="button" {{action 'stickwoman'}}> Woman </button>
 
     <!-- Start game and check if unallowed characters were used -->
+    <!-- playGame=playGame = model as model, functions are inside model -->
     {{pick-hangman  playGame=playGame}}
-    {{#unless playGame.isValid }}
-      <p> Special characters and numbers are not allowed </p>
-    {{/unless }}
+
 
   {{/if}}
 
