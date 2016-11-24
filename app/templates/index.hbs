@@ -1,6 +1,7 @@
-<div >
-  {{input value=newGameWord}}
-  <button class="btn btn-lg btn-success" href="#" role="button"
-  {{action "createNewGame"}}>Start Game</button>
 
+
+<div >
+  {{input insert-newline='createNewGame' value=newGameWord }}
+  <button  class="btn btn-lg btn-success" href="#" role="button"
+  {{action "createNewGame"}}>Start Game</button>
 </div>

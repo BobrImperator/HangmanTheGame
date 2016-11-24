@@ -42,6 +42,10 @@
     "ember-truth-helpers": "1.2.0",
     "emberfire": "2.0.4",
     "emberx-select": "2.2.1",
-    "loader.js": "^4.0.1"
+    "loader.js": "^4.0.1",
+    "torii": "0.8.1"
+  },
+  "dependencies": {
+    "emberfire": "^2.0.4"
   }
 }

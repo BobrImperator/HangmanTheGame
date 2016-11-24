@@ -6,6 +6,10 @@
     "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
     "bootstrap": "^3.3.7",
-    "firebase": "^3.0.0"
+    "firebase": "^3.0.0",
+    "emberfire": "^2.0.4"
+  },
+  "devDependencies": {
+    "firebase-simple-login": "^1.6.4"
   }
 }

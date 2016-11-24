@@ -2,6 +2,7 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.Model.extend({
+user: DS.belongsTo('user'),
 wordRaw: DS.attr("string", {defaultValue: "Hello"}),
 state: DS.attr("string", {defaultValue: "provideWord"}),
 guessedLetters: DS.attr({defaultValue: () => [] }),
@@ -32,6 +33,12 @@ wordSoFar: Ember.computed('correctLetters.[]', function() {
   return word.map(letter => correctLetters.includes(letter) ? letter : "_").join(" ");
 
 }),
+// superPowerRandomLetter: Ember.computed('word','guessedLetters.[]','letters',function(){
+//   let word = this.get('word').toLowerCase().split(''),
+//     guessedLetters = this.get('guessedLetters'),
+//     letters = this.get('letters');
+//     //in progress
+// }),
 
 remainingLives: Ember.computed('correctLetters.[]', 'guessedLetters.[]', function() {
   let livesCount = this.get('livesCount'),
