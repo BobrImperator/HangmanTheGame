@@ -18,14 +18,7 @@ actions: {
       this.get('playGame').save();
     },
     startGame() {
-      let isValid = this.get('playGame.isValid');
-      if (isValid) {
         this.set('playGame.state', 'play');
-        this.get('playGame').save();
-      } else {
-        alert("Special characters and numbers are not allowed");
-
-      }
     },
 
       replayGame() {
