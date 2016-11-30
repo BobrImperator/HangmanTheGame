@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 export default DS.Model.extend({
 user: DS.belongsTo('user'),
-wordRaw: DS.attr("string", {defaultValue: "Hello"}),
+wordRaw: DS.attr("string",),
 state: DS.attr("string", {defaultValue: "provideWord"}),
 guessedLetters: DS.attr({defaultValue: () => [] }),
 letters: DS.attr({defaultValue: () => ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',

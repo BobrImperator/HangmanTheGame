@@ -19,6 +19,7 @@ actions: {
     },
     startGame() {
         this.set('playGame.state', 'play');
+        this.get('playGame').save();
     },
 
       replayGame() {
