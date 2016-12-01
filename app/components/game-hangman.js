@@ -1,12 +1,13 @@
 import Ember from 'ember';
-
 export default Ember.Component.extend({
+  session: Ember.inject.service(),
 actions: {
     clickLetter(letter) {
       let letters = this.get("playGame.letters"),
         guessedLetters = this.get('playGame.guessedLetters');
-      letters.removeObject(letter);
-      guessedLetters.pushObject(letter);
+        letters.removeObject(letter);
+        guessedLetters.pushObject(letter);
+
       this.get('playGame').save();
     },
     stickman() {

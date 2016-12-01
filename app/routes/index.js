@@ -9,19 +9,23 @@ export default Ember.Route.extend({
         return pattern.test(word);
       };
       let word = this.controller.get('newGameWord');
-
       if (isValid(word)) {
         let user = this.get('session.currentUser');
         let game = this.store.createRecord('game', {
-          wordRaw: word
+          wordRaw: word,
         });
-        
+
+        user.save();
+
         game
         this.store.createRecord('game', {
-          user: user})
+          user: user,
+          state: 'play',
+          wordRaw: word})
           .save()
           .then(() => this.transitionTo('game', game));
-          user.save();
+
+
 
       } else {
         alert("Special characters and numbers are not allowed");
