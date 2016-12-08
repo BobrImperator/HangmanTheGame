@@ -11,19 +11,15 @@ export default Ember.Route.extend({
       let word = this.controller.get('newGameWord');
       if (isValid(word)) {
         let user = this.get('session.currentUser');
-        let game = this.store.createRecord('game', {
-          wordRaw: word,
-        });
 
         user.save();
 
-        game
         this.store.createRecord('game', {
           user: user,
           state: 'play',
           wordRaw: word})
           .save()
-          .then(() => this.transitionTo('game', game));
+          .then((game) => this.transitionTo('game', game));
 
 
 

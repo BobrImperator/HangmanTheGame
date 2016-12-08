@@ -25,9 +25,15 @@ actions: {
 
       replayGame() {
         this.set('playGame.state', 'provideWord');
-        this.get('platGame').save();
+        this.get('playGame').save();
 
-      }
+      },
+      // superPowerRandomLetter() {
+      //   let word = this.get('playGame.word').toLowerCase().split(''),
+      //     guessedLetters = this.get('guessedLetters'),
+      //     letters = this.get('letters');
+      //
+      // }),
     }
 
 

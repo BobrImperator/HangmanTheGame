@@ -33,12 +33,6 @@ wordSoFar: Ember.computed('correctLetters.[]', function() {
   return word.map(letter => correctLetters.includes(letter) ? letter : "_").join(" ");
 
 }),
-// superPowerRandomLetter: Ember.computed('word','guessedLetters.[]','letters',function(){
-//   let word = this.get('word').toLowerCase().split(''),
-//     guessedLetters = this.get('guessedLetters'),
-//     letters = this.get('letters');
-//     //in progress
-// }),
 
 remainingLives: Ember.computed('correctLetters.[]', 'guessedLetters.[]', function() {
   let livesCount = this.get('livesCount'),
