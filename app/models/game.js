@@ -11,6 +11,8 @@ letters: DS.attr({defaultValue: () => ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
   't', 'u', 'v', 'w', 'x', 'y', 'z'] }),
 livesCount: 9,
 isMan: DS.attr("string", {defaultValue: "Man"}),
+haveUsedCheat: DS.attr('boolean', {defaultValue: false}),
+
 word: Ember.computed('wordRaw', function() {
   return this.get('wordRaw').trim();
 }),

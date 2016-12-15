@@ -28,47 +28,19 @@ actions: {
         this.get('playGame').save();
 
       },
-      // superPowerRandomLetter() {
-      //   let word = this.get('playGame.word').toLowerCase().split(''),
-      //     guessedLetters = this.get('guessedLetters'),
-      //     letters = this.get('letters');
-      //
-      // }),
+      superPowerRandomLetter() {
+        let word = this.get('playGame.word').toLowerCase().split(''),
+          guessedLetters = this.get('playGame.guessedLetters'),
+          correctLetters = this.get('playGame.correctLetters'),
+          letters = this.get('playGame.letters'),
+          haveUsedCheat = this.get('playGame.haveUsedCheat'),
+          randomLetter = word[~~(Math.random()*word.length)];
+          letters.removeObject(randomLetter);
+          correctLetters.pushObject(randomLetter);
+          guessedLetters.pushObject(randomLetter);
+          this.set('playGame.haveUsedCheat',true);
+          this.get('playGame').save();
+
+      }
     }
-
-
-
-
-});
-
-//Usuwa litere z letters
-// correctLetters w kolejnosci dla danego slowa , computed property, iterujaca i wyswietlajaca.
-// map jak zgadnieta literka to zwrocona literka jesli nie to - ...
-// result = function () {
-//     wordHolder = document.getElementById('hold');
-//     correct = document.createElement('ul');
-//
-//     for (var i = 0; i < word.length; i++) {
-//       correct.setAttribute('id', 'my-word');
-//       guess = document.createElement('li');
-//       guess.setAttribute('class', 'guess');
-//       if (word[i] === "-") {
-//         guess.innerHTML = "-";
-//         space = 1;
-//       } else {
-//         guess.innerHTML = "_";
-//       }
-//
-//       geusses.push(guess);
-//       wordHolder.appendChild(correct);
-//       correct.appendChild(guess);
-//     }
-//   }
-//
-// let letters = "abcdefghijklmnoprstwuyzx";
-// let lettersSplit = letters.split(" ");
-// let guessedLetter = [];
-// let remainingLives = 10;
-// let correctLetters =
-//
-// });
+  });

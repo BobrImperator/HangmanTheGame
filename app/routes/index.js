@@ -5,7 +5,7 @@ export default Ember.Route.extend({
   actions: {
     createNewGame() {
       const isValid = function(word) {
-        let pattern = new RegExp(/^[a-zA-Z ]+$/); //Acceptalbe chars - whit
+        let pattern = new RegExp(/^[a-zA-Z ]/); //Acceptalbe chars - whit
         return pattern.test(word);
       };
       let word = this.controller.get('newGameWord');
