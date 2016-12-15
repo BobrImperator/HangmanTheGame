@@ -67,6 +67,9 @@
       </div>
       <!-- remainingLives and conditions if Won or Lost -->
       <!-- Word's correctLetters -->
+      {{#unless (eq playGame.haveUsedCheat true)}}
+      <button {{action "superPowerRandomLetter"}}>Cheat</button>
+      {{/unless}}
       <div class="btn btn-lg btn-success">
         {{playGame.wordSoFar}}
       </div>
